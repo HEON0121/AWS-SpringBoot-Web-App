@@ -1,4 +1,4 @@
-package org.seheon.com.service;
+package org.seheon.com.service.users;
 
 import org.springframework.stereotype.Service;
 

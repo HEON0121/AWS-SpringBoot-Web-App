@@ -1,4 +1,4 @@
-package org.seheon.com.web;
+package org.seheon.com.web.web;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
