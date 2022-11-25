@@ -9,6 +9,9 @@ import org.seheon.com.web.dto.PostsUpdateRequestDTO;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @RequiredArgsConstructor
 @Service
 public class PostsService {
@@ -25,9 +28,23 @@ public class PostsService {
         posts.update(requestDTO.getTitle(), requestDTO.getContent());
         return id;
     }
-
+    @Transactional(readOnly = true)
     public PostsResponseDTO findById(Long id) {
         Posts entity = postsRepository.findById(id).orElseThrow(()->new IllegalArgumentException("해당 사용자가 없습니다. id="+ id));
         return new PostsResponseDTO(entity);
+    }
+
+    @Transactional(readOnly = true)
+    public List<PostsResponseDTO> findAllDesc() {
+        return postsRepository.findAllDesc().stream()
+                .map(PostsResponseDTO::new)
+                .collect(Collectors.toList());
+    }
+
+    public Long delete(Long id) {
+//        Posts post = postsRepository.findById(id)
+//                        .orElseThrow(() -> new IllegalArgumentException("해당 사용자가 없습니다. id=" + id));
+        postsRepository.deleteById(id);
+        return id;
     }
 }
