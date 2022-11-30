@@ -12,9 +12,9 @@ public class HelloController {
         return "hello";
     }
 
-    @GetMapping("/hello/user")
-    public User user(@RequestParam("id") String id,
-                     @RequestParam("password") String password){
-        return new User(id, password);
-    }
+//    @GetMapping("/hello/user")
+//    public User user(@RequestParam("id") String id,
+//                     @RequestParam("password") String password){
+//        return new User(id, password);
+//    }
 }
